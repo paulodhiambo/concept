@@ -36,11 +36,11 @@ istio:
 probes:
   liveness:
     path: /actuator/health/liveness
-    initialDelaySeconds: 30
+    initialDelaySeconds: 60
     periodSeconds: 10
-    failureThreshold: 3
+    failureThreshold: 5
   readiness:
     path: /actuator/health/readiness
-    initialDelaySeconds: 20
-    periodSeconds: 5
-    failureThreshold: 3
+    initialDelaySeconds: 45
+    periodSeconds: 10
+    failureThreshold: 5
