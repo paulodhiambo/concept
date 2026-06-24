@@ -6,7 +6,6 @@ on:
     paths-ignore:
       - 'helm/values.yaml'
       - 'argocd/rendered-deployment.yaml'
-
 env:
   APP_NAME: ${{ github.event.repository.name }}
   REPO_URL: ${{ github.server_url }}/${{ github.repository }}.git
