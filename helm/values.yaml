@@ -26,7 +26,7 @@ hpa:
   targetMemoryUtilizationPercentage: 80
 
 istio:
-  enabled: true
+  enabled: false
   host: concept.example.com
   gateway: istio-system/ingressgateway
   retries:
