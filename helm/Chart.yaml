@@ -1,0 +1,6 @@
+apiVersion: v2
+name: concept
+description: Spring Boot application Helm chart
+type: application
+version: 0.1.0
+appVersion: "latest"
