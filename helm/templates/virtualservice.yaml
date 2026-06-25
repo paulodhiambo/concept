@@ -2,10 +2,10 @@
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: {{ include "concept.fullname" . }}
+  name: {{ include "app.fullname" . }}
   namespace: {{ .Release.Namespace }}
   labels:
-    {{- include "concept.labels" . | nindent 4 }}
+    {{- include "app.labels" . | nindent 4 }}
 spec:
   hosts:
     - {{ .Values.istio.host }}
@@ -17,7 +17,7 @@ spec:
             prefix: /
       route:
         - destination:
-            host: {{ include "concept.fullname" . }}
+            host: {{ include "app.fullname" . }}
             port:
               number: {{ .Values.service.port }}
       timeout: 30s

@@ -18,7 +18,7 @@ metadata:
   name: {{ .Release.Name }}-authbypass
   namespace: {{ .Release.Namespace }}
   labels:
-    {{- include "concept.labels" . | nindent 4 }}
+    {{- include "app.labels" . | nindent 4 }}
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
@@ -53,7 +53,7 @@ metadata:
   name: {{ .Release.Name }}
   namespace: {{ .Release.Namespace }}
   labels:
-    {{- include "concept.labels" . | nindent 4 }}
+    {{- include "app.labels" . | nindent 4 }}
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     {{- if .Values.ingress.auth.enabled }}

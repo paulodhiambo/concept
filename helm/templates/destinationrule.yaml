@@ -2,12 +2,12 @@
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
-  name: {{ include "concept.fullname" . }}
+  name: {{ include "app.fullname" . }}
   namespace: {{ .Release.Namespace }}
   labels:
-    {{- include "concept.labels" . | nindent 4 }}
+    {{- include "app.labels" . | nindent 4 }}
 spec:
-  host: {{ include "concept.fullname" . }}
+  host: {{ include "app.fullname" . }}
   trafficPolicy:
     loadBalancer:
       simple: LEAST_REQUEST

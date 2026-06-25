@@ -1,26 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "concept.fullname" . }}
+  name: {{ include "app.fullname" . }}
   namespace: {{ .Release.Namespace }}
   labels:
-    {{- include "concept.labels" . | nindent 4 }}
+    {{- include "app.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      {{- include "concept.selectorLabels" . | nindent 6 }}
+      {{- include "app.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "concept.selectorLabels" . | nindent 8 }}
+        {{- include "app.selectorLabels" . | nindent 8 }}
       {{- if .Values.istio.enabled }}
       annotations:
         sidecar.istio.io/inject: "true"
       {{- end }}
     spec:
       containers:
-        - name: {{ include "concept.name" . }}
+        - name: {{ include "app.name" . }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
@@ -55,5 +55,5 @@ spec:
               podAffinityTerm:
                 labelSelector:
                   matchLabels:
-                    {{- include "concept.selectorLabels" . | nindent 20 }}
+                    {{- include "app.selectorLabels" . | nindent 20 }}
                 topologyKey: kubernetes.io/hostname
