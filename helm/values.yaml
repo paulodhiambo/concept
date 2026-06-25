@@ -33,6 +33,12 @@ istio:
     attempts: 3
     perTryTimeout: 5s
 
+ingress:
+  enabled: true
+  baseDomain: cluster.lakesideinn.space
+  auth:
+    enabled: true
+
 probes:
   liveness:
     path: /actuator/health/liveness
