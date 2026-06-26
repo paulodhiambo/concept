@@ -4,7 +4,7 @@ WORKDIR /app
 COPY pom.xml .
 RUN mvn dependency:go-offline -q
 COPY src ./src
-RUN mvn -Pnative native:compile -DskipTests
+RUN mvn -Pnative -DskipTests package
 
 FROM debian:bookworm-slim
 WORKDIR /app
