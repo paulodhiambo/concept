@@ -39,6 +39,21 @@ ingress:
   auth:
     enabled: true
 
+database:
+  configMap:
+    create: false
+    name: "concept-db-config"
+    host: localhost
+    port: "5432"
+    dbName: conceptdb
+  secret:
+    create: false      # set true to let Helm create the secret; prefer external management (Vault, SealedSecrets)
+    name: "concept-db-secret"
+    usernameKey: username
+    passwordKey: password
+    username: ""       # only used when create: true
+    password: ""       # only used when create: true
+
 probes:
   liveness:
     path: /actuator/health/liveness
