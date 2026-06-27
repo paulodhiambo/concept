@@ -45,16 +45,16 @@ spec:
             - name: DB_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: {{ default (printf "%s-db-secret" (include "app.fullname" .)) .Values.database.secret.name }}
+                  name: {{ .Values.database.secret.name }}
                   key: {{ .Values.database.secret.usernameKey }}
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ default (printf "%s-db-secret" (include "app.fullname" .)) .Values.database.secret.name }}
+                  name: {{ .Values.database.secret.name }}
                   key: {{ .Values.database.secret.passwordKey }}
           envFrom:
             - configMapRef:
-                name: {{ default (printf "%s-db-config" (include "app.fullname" .)) .Values.database.configMap.name }}
+                name: {{ .Values.database.configMap.name }}
           resources:
             requests:
               cpu: {{ .Values.resources.requests.cpu }}
