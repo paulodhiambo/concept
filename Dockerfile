@@ -1,13 +1,12 @@
-FROM ghcr.io/graalvm/native-image-community:21 AS build
-RUN microdnf install -y maven findutils
+FROM maven:3.9-eclipse-temurin-21 AS build
 WORKDIR /app
 COPY pom.xml .
 RUN mvn dependency:go-offline -q
 COPY src ./src
-RUN mvn -Pnative -DskipTests package
+RUN mvn -DskipTests package
 
-FROM debian:bookworm-slim
+FROM eclipse-temurin:21-jre
 WORKDIR /app
-COPY --from=build /app/target/concept .
+COPY --from=build /app/target/concept-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
-ENTRYPOINT ["./concept"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
