@@ -3,7 +3,7 @@ replicaCount: 2
 image:
   repository: ghcr.io/paulodhiambo/concept
   pullPolicy: IfNotPresent
-  tag: b8a65ee
+  tag: 701063e
 
 service:
   type: ClusterIP
